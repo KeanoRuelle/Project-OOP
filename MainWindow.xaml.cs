@@ -19,7 +19,7 @@ namespace Project_OOP
         public MainWindow()
         {
             InitializeComponent();
-            List<string> naam = new List<string>();
+            List<string> naamstudent = new List<string>();
         }
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
