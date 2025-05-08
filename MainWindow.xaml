@@ -1,0 +1,39 @@
+﻿<Window x:Class="Project_OOP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_OOP"
+        mc:Ignorable="d"
+        Title="Project OOP" SizeToContent="Height" Width="500" ResizeMode="NoResize" FontSize="15">
+    
+    <StackPanel>
+        
+        <GroupBox Header="Toevoegen Nieuwe student" Margin="10">
+            <StackPanel Margin="10">
+                <DockPanel>
+                    <Label Content="Naam student:" Width="130"></Label>
+                    <TextBox x:Name="tbxNaam"></TextBox>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Nummer Student:" Width="130"></Label>
+                    <TextBox x:Name="tbxNummer"></TextBox>
+                </DockPanel>
+                <Button x:Name="btnToevoegen" Content="Click om toe te voegen" Click="btnToevoegen_Click"></Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Verwijderen student" Margin="10">
+            <StackPanel Margin="10">
+                <ListBox x:Name="lbxStudent" Height="20"></ListBox>
+                <Button x:Name="btnVerwijder" Content="Verwijder de geselecteerde student." Click="btnVerwijder_Click"></Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Bekijken lijst" Margin="10">
+            <StackPanel Margin="10">
+                <Button x:Name="btnToonlijst" Content="Toon lijst" Click="btnToonlijst_Click"></Button>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</Window>
