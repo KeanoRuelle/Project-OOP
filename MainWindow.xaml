@@ -29,7 +29,7 @@
 
         <GroupBox Header="Verwijderen student" Margin="10">
             <StackPanel Margin="10">
-                <ListBox x:Name="lbxStudent" Height="20"></ListBox>
+                <ComboBox Name="cbxStudenten" IsEnabled="True"></ComboBox>
                 <Button x:Name="btnVerwijder" Content="Verwijder de geselecteerde student." Click="btnVerwijder_Click"></Button>
             </StackPanel>
         </GroupBox>

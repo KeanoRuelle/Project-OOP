@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,25 +19,24 @@ namespace Project_OOP
     public partial class MainWindow : Window
     {
         //private List<Student> studenten = new List<Student>();
-        List<Student> studenten = new List<Student>();
+        public ObservableCollection<string> studenten = new ObservableCollection<string>();
         public MainWindow()
         {
             InitializeComponent();
-            
+            cbxStudenten.ItemsSource = studenten;
         }
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            string voornaam = tbxVoornaam.Text;
-            string achternaam = tbxAchternaam.Text;
-            string nummer = tbxNummer.Text;
+            string voornaam = tbxVoornaam.Text.Trim();
+            string achternaam = tbxAchternaam.Text.Trim();
+            string nummer = tbxNummer.Text.Trim();
 
             if (!string.IsNullOrEmpty(voornaam) && !string.IsNullOrEmpty(achternaam) && !string.IsNullOrEmpty(nummer))
             {
                 Student nieuweStudent = new Student(voornaam, achternaam, nummer);
+                studenten.Add(nieuweStudent.Beschrijf());
 
-                studenten.Add(nieuweStudent);
-                
                 tbxVoornaam.Clear();
                 tbxAchternaam.Clear();
                 tbxNummer.Clear();
@@ -49,7 +49,10 @@ namespace Project_OOP
 
         private void btnVerwijder_Click(object sender, RoutedEventArgs e)
         {
-
+            if (cbxStudenten.SelectedItem != null)
+            {
+                studenten.Remove((string)cbxStudenten.SelectedItem);
+            }
         }
 
         private void btnToonlijst_Click(object sender, RoutedEventArgs e)
