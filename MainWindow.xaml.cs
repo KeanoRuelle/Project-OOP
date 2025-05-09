@@ -28,22 +28,29 @@ namespace Project_OOP
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            string voornaam = tbxVoornaam.Text.Trim();
-            string achternaam = tbxAchternaam.Text.Trim();
-            string nummer = tbxNummer.Text.Trim();
-
-            if (!string.IsNullOrEmpty(voornaam) && !string.IsNullOrEmpty(achternaam) && !string.IsNullOrEmpty(nummer))
+            try
             {
-                Student nieuweStudent = new Student(voornaam, achternaam, nummer);
-                studenten.Add(nieuweStudent.Beschrijf());
+                string voornaam = tbxVoornaam.Text;
+                string achternaam = tbxAchternaam.Text;
+                string nummer = tbxNummer.Text;
 
-                tbxVoornaam.Clear();
-                tbxAchternaam.Clear();
-                tbxNummer.Clear();
+                if (!string.IsNullOrEmpty(voornaam) && !string.IsNullOrEmpty(achternaam) && !string.IsNullOrEmpty(nummer))
+                {
+                    Student nieuweStudent = new Student(voornaam, achternaam, nummer);
+                    studenten.Add(nieuweStudent.Beschrijf());
+
+                    tbxVoornaam.Clear();
+                    tbxAchternaam.Clear();
+                    tbxNummer.Clear();
+                }
+                else
+                {
+                    throw new Exception();
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Gelieve voornaam, achternaam en nummer in te vullen.");
+                MessageBox.Show("Geef een Voornaam, Achternaam en nummer in");
             }
         }
 
