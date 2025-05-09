@@ -12,11 +12,15 @@
         <GroupBox Header="Toevoegen Nieuwe student" Margin="10">
             <StackPanel Margin="10">
                 <DockPanel>
-                    <Label Content="Naam student:" Width="130"></Label>
-                    <TextBox x:Name="tbxNaam"></TextBox>
+                    <Label Content="Voornaam student:" Width="150"></Label>
+                    <TextBox x:Name="tbxVoornaam"></TextBox>
                 </DockPanel>
                 <DockPanel>
-                    <Label Content="Nummer Student:" Width="130"></Label>
+                    <Label Content="Achternaam Student:" Width="150"></Label>
+                    <TextBox x:Name="tbxAchternaam"></TextBox>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Nummer Student:" Width="150"></Label>
                     <TextBox x:Name="tbxNummer"></TextBox>
                 </DockPanel>
                 <Button x:Name="btnToevoegen" Content="Click om toe te voegen" Click="btnToevoegen_Click"></Button>
