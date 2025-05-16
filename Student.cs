@@ -10,6 +10,7 @@ namespace Project_OOP
     public class Student : Persoon
     {
         public int Studentennummer { get; set; }
+
         private int score;
 
         public int Score

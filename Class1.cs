@@ -13,7 +13,7 @@ namespace Project_OOP
         public string Voornaam
         {
             get { return voornaam; }
-            set { voornaam = char.ToUpper(value[0]) + value.Substring(1); }
+            set { voornaam = char.ToUpper(value[0]) + value.Substring(1).ToLower(); }
         }
 
 

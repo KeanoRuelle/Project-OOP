@@ -49,7 +49,6 @@ namespace Project_OOP
                     MessageBox.Show("Fout bij het inlezen van studenten: " + ex.Message);
                 }
             }
-
         }
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
