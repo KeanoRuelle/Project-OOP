@@ -8,8 +8,23 @@ namespace Project_OOP
 {
     public abstract class Persoon
     {
-        public string Voornaam { get; set; }
-        public string Achternaam { get; set; }
+        private string voornaam;
+
+        public string Voornaam
+        {
+            get { return voornaam; }
+            set { voornaam = char.ToUpper(value[0]) + value.Substring(1); }
+        }
+
+
+        private string achternaam;
+
+        public string Achternaam
+        {
+            get { return achternaam; }
+            set { achternaam = char.ToUpper(value[0]) + value.Substring(1); }
+        }
+
 
         public Persoon(string voornaam, string achternaam)
         {
