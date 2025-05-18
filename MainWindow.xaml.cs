@@ -122,11 +122,78 @@ namespace Project_OOP
                             bestaandeStudenten.Remove(teVerwijderen);
                             string nieuweJson = JsonSerializer.Serialize(bestaandeStudenten, new JsonSerializerOptions { WriteIndented = true });
                             File.WriteAllText(JsonPad, nieuweJson);
+                            
                         }
                     }
                 }
             }
         }
 
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            studenten.Clear();
+
+            // Leeg de JSON-file
+            string JsonPad = "Studenten.json";
+            File.WriteAllText(JsonPad, "[]");
+        }
+
+        private void btnScoreAanpassen_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbxStudenten.SelectedItem != null && int.TryParse(tbxScoreAanpassen.Text, out int nieuweScore))
+            {
+
+                string geselecteerdeBeschrijving = cbxStudenten.SelectedItem.ToString();
+                string jsonPad = "Studenten.json";
+
+                if (File.Exists(jsonPad))
+                {
+                    string json = File.ReadAllText(jsonPad);
+                    List<Student> studentenUitJson = JsonSerializer.Deserialize<List<Student>>(json);
+
+                    if (studentenUitJson != null)
+                    {
+                        Student geselecteerde = studentenUitJson.FirstOrDefault(s => s.Beschrijf() == geselecteerdeBeschrijving);
+
+                        if (geselecteerde != null)
+                        {
+                            geselecteerde.Score = nieuweScore;
+
+                            // Schrijf terug naar JSON
+                            string nieuwJson = JsonSerializer.Serialize(studentenUitJson, new JsonSerializerOptions { WriteIndented = true });
+                            File.WriteAllText(jsonPad, nieuwJson);
+
+                            // Update ComboBox (herbouw beschrijving)
+                            studenten[cbxStudenten.SelectedIndex] = geselecteerde.Beschrijf();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void cbxStudenten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbxStudenten.SelectedItem != null)
+            {
+                string geselecteerdeBeschrijving = cbxStudenten.SelectedItem.ToString();
+                string jsonPad = "Studenten.json";
+
+                if (File.Exists(jsonPad))
+                {
+                    string json = File.ReadAllText(jsonPad);
+                    List<Student> studentenUitJson = JsonSerializer.Deserialize<List<Student>>(json);
+
+                    if (studentenUitJson != null)
+                    {
+                        Student geselecteerde = studentenUitJson.FirstOrDefault(s => s.Beschrijf() == geselecteerdeBeschrijving);
+
+                        if (geselecteerde != null)
+                        {
+                            tbxScoreAanpassen.Text = geselecteerde.Score.ToString();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

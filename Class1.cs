@@ -22,7 +22,7 @@ namespace Project_OOP
         public string Achternaam
         {
             get { return achternaam; }
-            set { achternaam = char.ToUpper(value[0]) + value.Substring(1); }
+            set { achternaam = char.ToUpper(value[0]) + value.Substring(1).ToLower(); }
         }
 
 

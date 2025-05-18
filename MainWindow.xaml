@@ -33,8 +33,15 @@
 
         <GroupBox Header="Verwijderen student" Margin="10">
             <StackPanel Margin="10">
-                <ComboBox Name="cbxStudenten" IsEnabled="True"></ComboBox>
+                <ComboBox Name="cbxStudenten" IsEnabled="True" SelectionChanged="cbxStudenten_SelectionChanged" ></ComboBox>
                 <Button x:Name="btnVerwijder" Content="Verwijder de geselecteerde student." Click="btnVerwijder_Click"></Button>
+                <Button x:Name="btnReset" Content="Verwijderen alle studenten." Click="btnReset_Click"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Anpassen student" Margin="10">
+            <StackPanel Margin="10">
+                <TextBox x:Name="tbxScoreAanpassen" Width="300"></TextBox>
+                <Button x:Name="btnScoreAanpassen" Content="Verander de score" Click="btnScoreAanpassen_Click" Width="300"></Button>
             </StackPanel>
         </GroupBox>
 
