@@ -38,7 +38,7 @@ namespace Project_OOP
 
                     if (opgeslagenStudenten != null)
                     {
-                        foreach (Student s in opgeslagenStudenten)
+                        foreach (Student s in opgeslagenStudenten.OrderBy(s => s.Achternaam))
                         {
                             studenten.Add(s.Beschrijf());
                         }
@@ -83,10 +83,18 @@ namespace Project_OOP
                     string nieuweJson = JsonSerializer.Serialize(bestaandeStudenten, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(JsonPad, nieuweJson);
 
+                    // Herlaad gesorteerde beschrijvingen
+                    studenten.Clear();
+                    foreach (Student s in bestaandeStudenten.OrderBy(s => s.Achternaam))
+                    {
+                        studenten.Add(s.Beschrijf());
+                    }
+
                     tbxVoornaam.Clear();
                     tbxAchternaam.Clear();
                     tbxNummer.Clear();
                     tbxScore.Clear();
+                    tbxScoreAanpassen.Clear();
                 }
                 else
                 {
@@ -165,6 +173,7 @@ namespace Project_OOP
 
                             // Update ComboBox (herbouw beschrijving)
                             studenten[cbxStudenten.SelectedIndex] = geselecteerde.Beschrijf();
+                            tbxScoreAanpassen.Clear();
                         }
                     }
                 }

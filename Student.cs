@@ -35,7 +35,7 @@ namespace Project_OOP
         }
         public override string Beschrijf()
         {
-            return $"Student: {Voornaam} {Achternaam}, Nummer: {Studentennummer}, Score: {Score}";
+            return $"Student: {Achternaam} {Voornaam}, Nummer: {Studentennummer}, Score: {Score}";
         }
     }
 }
