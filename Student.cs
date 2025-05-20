@@ -9,7 +9,14 @@ namespace Project_OOP
 {
     public class Student : Persoon
     {
-        public int Studentennummer { get; set; }
+        private int studentennummer;
+
+        public int Studentennummer
+        {
+            get { return studentennummer; }
+            set { studentennummer = Math.Abs(value); }
+        }
+
 
         private int score;
 
